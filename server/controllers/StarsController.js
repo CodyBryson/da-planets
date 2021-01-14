@@ -1,6 +1,7 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
 import { starsService } from "../services/StarsService";
+import { galaxiesService } from "../services/GalaxiesService"
 
 export class StarsController extends BaseController {
   constructor() {
@@ -17,7 +18,7 @@ export class StarsController extends BaseController {
 
   async getPlanets(req, res, next) {
     try {
-      let data = await starsService.find({ stars: req.params.id })
+      let data = await galaxiesService.find({ stars: req.params.id })
       res.send(data)
     } catch (error) {
       next(error)
@@ -25,7 +26,7 @@ export class StarsController extends BaseController {
   }
   async getMoons(req, res, next) {
     try {
-      let data = await starsService.find({ planets: req.params.id })
+      let data = await galaxiesService.find({ planets: req.params.id })
       res.send(data)
     } catch (error) {
       next(error)
